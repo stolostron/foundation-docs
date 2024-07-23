@@ -1,0 +1,1 @@
+# The `Available` condition of `klusterlet` is `False`

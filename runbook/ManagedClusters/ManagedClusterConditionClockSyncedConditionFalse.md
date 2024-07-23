@@ -1,0 +1,1 @@
+# The `ManagedClusterConditionClockSynced` condition of `ManagedCluster` is `False`

@@ -1,0 +1,1 @@
+# The `ManagedClusterConditionAvailable` condition of `ManagedCluster` is `False`

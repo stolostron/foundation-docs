@@ -1,0 +1,1 @@
+# The `ManagedClusterImportSucceeded` condition of `ManagedCluster` is `False`
