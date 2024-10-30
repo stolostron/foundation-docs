@@ -10,7 +10,7 @@ oc get managedclusteraddon -n <cluster-name> -o <addon-name>
 and it returns empty result.
 
 ## Meaning
-The addon is not successfully installed in the cluster.
+The addon is not successfully installed in clusters.
 
 ## Impact
 Once the issue happens, the addon does not function properly. For instance, the URL of the managed cluster
@@ -19,30 +19,46 @@ working, the `ManagedClusterInfo` resource is not updated either.
 
 ## Diagnosis
 
-Check if the `ManagedClusterAddon` resource existing in the cluster namespace.
+At first, check if the `ClusterManagementAddon` exists.
+Check the `ClusterManagementAddon` on the hub cluster.
+```shell
+oc get clustermanagementaddon <addon-name> -o yaml
+```
 
-```shell
-oc get managedclusteraddon -n <cluster-name> -o <addon-name>
+If the yaml exists, check the `spec.installStrategy` field. By default, the type will be
+`Placements` with the following field:
+```yaml
+placements:
+  - name: global
+    namespace: open-cluster-management-global
 ```
+
+Next check if the `ManagedClusterAddon` resource existing in the cluster namespace.
+```shell
+oc get managedclusteraddon <addon-name> -n <cluster-name>
+```
+
 If the resource is missing. Check if global `ManagedClusterSet` exists:
-```shell
-oc get managedclusterset global
-```
-Check if namespace `open-cluster-management-global` exists:
-```shell
-oc get ns open-cluster-management-global
-```
-if the namespace exists, check if global `ManagedClusterBinding` and `Placement` exists:
-```shell
-oc get managedclustersetbinding -n open-cluster-management-global
-```
-and
-```shell
-oc get placement -n open-cluster-management-global
-```
-If the namespace, managedclusterbinding or placement does not exist, check global managedclusterset
 ```shell
 oc get managedclusterset global -o yaml
 ```
-and if the annotation `open-cluster-management.io/ns-create: "true"` is in the managedclusterset, need to
+And check if the annotion `open-cluster-management.io/ns-create: "true"` is set already on the
+`ManagedClusterSet` resource.
+
+Then check if namespace `open-cluster-management-global` exists:
+```shell
+oc get ns open-cluster-management-global -o yaml
+```
+
+If the namespace exists, check if global `ManagedClusterBinding` and `Placement` exists:
+```shell
+oc get managedclustersetbinding global -n open-cluster-management-global -o yaml
+```
+and
+```shell
+oc get placement global -n open-cluster-management-global -o yaml
+```
+
+If the namespace, managedclusterbinding or placement does not exist, and the annotation
+`open-cluster-management.io/ns-create: "true"` is set in the managedclusterset,
 remove this annotation to make namespace/managedclustersetbinding/placement recreated.
