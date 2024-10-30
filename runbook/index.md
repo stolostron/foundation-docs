@@ -20,6 +20,7 @@
 - [The `ManagedClusterConditionAvailable` condition of `ManagedCluster` is `Unknown`](./ManagedClusters/ManagedClusterAvailableConditionUnknown.md)
 
 # ManagedClusterAddOns
+- [The `ManagedClusterAddOn` is not created in the cluster namespace](./ManagedClusterAddOns/ManagedClusterAddOnMissing.md)
 
 # Certificates
 - [tls: failed to verify certificate: x509: certificate signed by unknown authority](./Certificates/x509:CertificateSignedByUnknownAuthority.md)
