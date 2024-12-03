@@ -1,26 +1,31 @@
 # Foundation Runbook
 
-# Managed clusters
+## Managed clusters
 
-## Cluster provisioning
+### Cluster provisioning
 
-## Cluster importing
+### Cluster importing
+
 - [The `ManagedClusterImportSucceeded` condition of `ManagedCluster` is `False`](./ManagedClusters/ManagedClusterImportSucceededConditionFalse.md)
 
-## Cluster registration
+### Cluster registration
+
 - [The `ManagedClusterJoined` condition of `ManagedCluster` is not present](./ManagedClusters/ManagedClusterJoinedConditionMissing.md)
 
-## Cluster detaching
+### Cluster detaching
 
-## Cluster destroy
+### Cluster destroy
 
-## Others
+### Others
 
 - [The `ManagedClusterConditionAvailable` condition of `ManagedCluster` is `False`](./ManagedClusters/ManagedClusterAvailableConditionFalse.md)
 - [The `ManagedClusterConditionAvailable` condition of `ManagedCluster` is `Unknown`](./ManagedClusters/ManagedClusterAvailableConditionUnknown.md)
 
-# ManagedClusterAddOns
-- [The `ManagedClusterAddOn` is not created in the cluster namespace](./ManagedClusterAddOns/ManagedClusterAddOnMissing.md)
+## ManagedClusterAddOns
 
-# Certificates
+- [The `ManagedClusterAddOn` is not created in the cluster namespace](./ManagedClusterAddOns/ManagedClusterAddOnMissing.md)
+- [The `ManagedClusterAddOn` is created after several hours of the cluster importion](./ManagedClusterAddOns/KlusterletAddOnConfigNameMismatch.md)
+
+## Certificates
+
 - [tls: failed to verify certificate: x509: certificate signed by unknown authority](./Certificates/x509:CertificateSignedByUnknownAuthority.md)
