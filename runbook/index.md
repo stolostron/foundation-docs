@@ -27,6 +27,7 @@
 - [The `ManagedClusterAddOn` is not created in the cluster namespace](./ManagedClusterAddOns/ManagedClusterAddOnMissing.md)
 - [The `ManagedClusterAddOn` is created after several hours of the cluster importion](./ManagedClusterAddOns/KlusterletAddOnConfigNameMismatch.md)
 - [The `ManagedClusterAddOn` agents crashed by misconfigured proxy](./ManagedClusterAddOns/KlusterletAddOnConfigNoProxy.md)
+- [The `work-manager` addOn is not Available](./ManagedClusterAddOns/WorkManagerAddOnUnavailable.md)
 
 ## Certificates
 
