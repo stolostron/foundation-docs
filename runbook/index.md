@@ -25,6 +25,7 @@
 
 - [The `ManagedClusterAddOn` is not created in the cluster namespace](./ManagedClusterAddOns/ManagedClusterAddOnMissing.md)
 - [The `ManagedClusterAddOn` is created after several hours of the cluster importion](./ManagedClusterAddOns/KlusterletAddOnConfigNameMismatch.md)
+- [The `work-manager` is not Available](./ManagedClusterAddOns/WorkManagerAddOnUnavailable.md)
 
 ## Certificates
 
