@@ -1,7 +1,7 @@
-# Expose Klusterlet Operator metrics
+# Expose Klusterlet agent metrics
 # Instructions
-Run the following commands on the cluster where the Klusterlet Operator is running:
-1. Add additional permissions for the `klusterlet` ServiceAccount.
+Run the following commands on the cluster where the Klusterlet agent is running:
+1. Add additional permissions for the `klusterlet-work-sa` ServiceAccount.
 - ClusterRole
 ```
 oc apply -f - <<EOF
@@ -28,7 +28,7 @@ roleRef:
   name: klusterlet-tokenreviews
 subjects:
 - kind: ServiceAccount
-  name: klusterlet
+  name: klusterlet-work-sa
   namespace: open-cluster-management-agent
 EOF
 ```
@@ -38,15 +38,15 @@ EOF
 oc label --overwrite ns open-cluster-management-agent openshift.io/cluster-monitoring=true
 ```
 
-3. Create a service to expose the metric endpoint of the Klusterlet Operator
+3. Create a service to expose the metric endpoint of the Klusterlet agent
 ```
 oc apply -f - <<EOF
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: klusterlet
-  name: klusterlet
+    app: klusterlet-agent
+  name: klusterlet-agent
   namespace: open-cluster-management-agent
 spec:
   ports:
@@ -55,18 +55,17 @@ spec:
     protocol: TCP
     targetPort: 8443
   selector:
-    app: klusterlet
-  type: ClusterIP
+    app: klusterlet-agent
 EOF
 ```
 
-4. Create a ServiceMonitor to scrape the metrics of Klusterlet Operator
+4. Create a ServiceMonitor to scrape the metrics of Klusterlet agent
 ```
 oc apply -f - <<EOF
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: klusterlet
+  name: klusterlet-agent
   namespace: open-cluster-management-agent
 spec:
   endpoints:
@@ -77,17 +76,17 @@ spec:
     scrapeTimeout: 10s
     tlsConfig:
       insecureSkipVerify: true
-  jobLabel: klusterlet
+  jobLabel: klusterlet-agent
   namespaceSelector:
     matchNames:
     - open-cluster-management-agent
   selector:
     matchLabels:
-      app: klusterlet
+      app: klusterlet-agent
 EOF
 ```
 
 # Useful metrics
+- rest_client_requests_total
+- rest_client_request_duration_seconds_bucket
 - workqueue_depth
-- workqueue_longest_running_processor_seconds
-- workqueue_retries_total
