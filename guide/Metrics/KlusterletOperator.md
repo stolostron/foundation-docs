@@ -91,3 +91,6 @@ EOF
 - rest_client_requests_total
 - rest_client_request_duration_seconds_bucket
 - workqueue_depth
+
+# Troubleshooting
+## [Missing Permission for Prometheus Service Account](Toubleshooting-MissingPermissionForPrometheus.md)

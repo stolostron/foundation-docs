@@ -1,4 +1,4 @@
-# Setup work agent dashbaord
+# Setup work agent dashboard
 
 ## Installation
 

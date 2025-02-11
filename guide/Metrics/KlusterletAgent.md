@@ -21,7 +21,7 @@ oc apply -f - <<EOF
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: klusterlet-tokenreviews
+  name: klusterlet-agent-tokenreviews
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -90,3 +90,6 @@ EOF
 - rest_client_requests_total
 - rest_client_request_duration_seconds_bucket
 - workqueue_depth
+
+# Troubleshooting
+## [Missing Permission for Prometheus Service Account](Toubleshooting-MissingPermissionForPrometheus.md)
