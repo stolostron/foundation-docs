@@ -26,8 +26,6 @@ This visualization shows the 75th percentile of the duration of requests sent by
 
 ### Requests to Managed Cluster
 #### Request Rate
-The visualization shows the rate of the requests sent by the Klusterlet agent to the managed cluster Kube apiserver. If the value keeps large for a while, it may indicate the Klusterlet agent bring too much presure to the managed Kube apiserver.
-
 This visualization displays the rate of requests sent by the Klusterlet agent to the managed cluster Kube apiserver. A sustained high value may indicate that the Klusterlet agent is placing excessive pressure on the managed cluster Kube apiserver.
 
 #### Request Duration - P75

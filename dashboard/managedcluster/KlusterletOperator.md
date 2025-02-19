@@ -12,7 +12,7 @@
 3. In the `Import dashboard` view, paste the contenet of [KlusterletOperator.json](KlusterletOperator.json) into the text area labeled `Import via dashboard JSON model`.
 4. Click `Load` and then `Import` to load the dashboard.
 
-## Work operator dashboard
+## Klusterlet operator dashboard
 The `Klusterlet Operator` dashboard is organized into three distinct sections, each designed to monitor specific Service Level Indicators (SLIs).
 
 ### Requests to Hub Cluster
@@ -26,8 +26,6 @@ This visualization shows the 75th percentile of the duration of requests sent by
 
 ### Requests to Managed Cluster
 #### Request Rate
-The visualization shows the rate of the requests sent by the Klusterlet operator to the managed cluster Kube apiserver. If the value keeps large for a while, it may indicate the Klusterlet operator bring too much presure to the managed Kube apiserver.
-
 This visualization displays the rate of requests sent by the Klusterlet operator to the managed cluster Kube apiserver. A sustained high value may indicate that the Klusterlet operator is placing excessive pressure on the managed cluster Kube apiserver.
 
 #### Request Duration - P75
