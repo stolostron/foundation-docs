@@ -7,6 +7,7 @@
 ### Cluster importing
 
 - [The `ManagedClusterImportSucceeded` condition of `ManagedCluster` is `False`](./ManagedClusters/ManagedClusterImportSucceededConditionFalse.md)
+- [Auto-import of `ManagedCluster` not triggered](./ManagedClusters/AutoImportNotTriggered.md)
 
 ### Cluster registration
 
