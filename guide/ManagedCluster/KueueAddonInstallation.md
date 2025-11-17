@@ -16,10 +16,16 @@ Before installing the Kueue Addon, ensure the following requirements are met:
 
 ### ACM Hub Cluster Requirements
 - Red Hat Advanced Cluster Management (ACM) installed and configured.
-- The following ACM addons must be installed and available:
+- The addon requirements depend on your hub-to-spoke connection method:
   - **[Cluster Permission Addon](https://github.com/open-cluster-management-io/cluster-permission)**: Enables proper RBAC for cross-cluster operations.
   - **[Managed Service Account Addon](https://github.com/open-cluster-management-io/managed-serviceaccount)**: Handles service account management across clusters.
-  - **[Cluster Proxy Addon](https://github.com/open-cluster-management-io/cluster-proxy)**: Provides secure communication channels (optional but recommended).
+  - **[Cluster Proxy Addon](https://github.com/open-cluster-management-io/cluster-proxy)**: Provides secure communication channels.
+
+  | Hub to Spoke Connection | Required Addons |
+  |-------------------|-----------------|
+  | Direct connection | [Cluster Permission Addon](https://github.com/open-cluster-management-io/cluster-permission) + [Managed Service Account Addon](https://github.com/open-cluster-management-io/managed-serviceaccount) |
+  | Cluster proxy | [Cluster Permission Addon](https://github.com/open-cluster-management-io/cluster-permission) + [Managed Service Account Addon](https://github.com/open-cluster-management-io/managed-serviceaccount) + [Cluster Proxy Addon](https://github.com/open-cluster-management-io/cluster-proxy) |
+  | Cluster proxy with impersonation | [Cluster Permission Addon](https://github.com/open-cluster-management-io/cluster-permission) + [Cluster Proxy Addon](https://github.com/open-cluster-management-io/cluster-proxy) |
 
 ### Kueue Requirements
 - **Kueue operator already installed on the hub cluster** with MultiKueue functionality enabled.
@@ -112,6 +118,12 @@ networkPolicy:
           matchLabels:
             kubernetes.io/metadata.name: multicluster-engine
 ```
+
+**Configuration notes:**
+- The configuration ensures the Kueue operator and required dependencies are installed on your managed clusters through the Operator Lifecycle Manager (OLM).
+- This example enables cluster proxy impersonation mode.
+- If not using cluster proxy, remove the `clusterProxy` sections.
+- Adjust operator versions (`startingCSV`) to match your environment.
 
 ### Step 3: Install the Kueue Addon
 
